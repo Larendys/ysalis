@@ -1,0 +1,38 @@
+<form autocomplete="off" onsubmit="event.preventDefault();">
+    <p class="notes">Configure this tile sprite which is displayed above the Scene background.</p>
+
+    <div class="form-group">
+        <label for="img">Tile Sprite</label>
+        <div class="form-fields">
+            {{filePicker target="img" type="imagevideo"}}
+            <input class="image" type="text" name="img" placeholder="path/image.png" value="{{object.img}}"/>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="x">X-Position <span class="units">(pixels)</span></label>
+        <input type="text" name="x" value="{{object.x}}" data-dtype="Number"/>
+    </div>
+
+    <div class="form-group">
+        <label for="y">Y-Position <span class="units">(pixels)</span></label>
+        <input type="text" name="y" value="{{object.y}}" data-dtype="Number"/>
+    </div>
+
+    <div class="form-group">
+        <label for="width">Width <span class="units">(pixels)</span></label>
+        <input type="text" name="width" value="{{object.width}}" data-dtype="Number"/>
+    </div>
+
+    <div class="form-group">
+        <label for="height">Height <span class="units">(pixels)</span></label>
+        <input type="text" name="height" value="{{object.height}}" data-dtype="Number"/>
+    </div>
+
+    <div class="form-group">
+        <label for="height">Rotation <span class="units">(degrees)</span></label>
+        <input type="text" name="rotation" value="{{object.rotation}}" data-dtype="Number"/>
+    </div>
+
+    <button type="submit" name="submit" value="1"><i class="far fa-save"></i> {{submitText}} Tile</button>
+</form>

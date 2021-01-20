@@ -1,0 +1,22 @@
+<template id="notifications"></template>
+<section id="setup">
+    {{#if requireAuth}}
+    <form id="setup-authentication" class="app dark" method="post" autocomplete="off">
+        <h1>Foundry Virtual Tabletop &bull; Administrator Access</h1>
+        <div class="form-group">
+            <label for="key">Admin Access Key</label>
+            <input id="key" name="adminKey" type="password"/>
+            <p class="notes">You must provide the admin access key in order to access application setup.</p>
+        </div>
+
+        <div class="form-group">
+            <button type="submit" name="action" value="adminAuth">
+                <i class="fas fa-key"></i>
+                Submit Key
+            </button>
+        </div>
+    </form>
+    {{else}}
+    <template id="setup-configuration"></template>
+    {{/if}}
+</section>

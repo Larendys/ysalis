@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Foundry Virtual Tabletop &bull; A Standalone Virtual Tabletop Application</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="icon" href="icons/vtt.png">
+
+    <!-- Included Stylesheets -->
+    <link href="css/style.css" rel="stylesheet" type="text/css" media="all">
+    <link href="fonts/fontawesome/css/all.min.css" rel="stylesheet" type="text/css" media="all">
+
+    <!-- Included Scripts -->
+    <script src="scripts/jquery.min.js"></script>
+    <script src="scripts/handlebars.min.js"></script>
+    <script src="scripts/handlebars-intl.min.js"></script>
+    <script src="scripts/howler.min.js"></script>
+    <script src="scripts/pixi.min.js"></script>
+    <script src="scripts/socket.io.slim.js"></script>
+    <script src="scripts/tinymce.min.js"></script>
+    <script src="scripts/foundry.js"></script>
+
+    <!-- Global Variables -->
+    <script>
+    const SIGNED_EULA={{eula}};
+    const ROUTE_PREFIX="{{routePrefix}}";
+    const MESSAGES={{#if messages}}{{{messages}}}{{else}}null{{/if}};
+    </script>
+</head>
+
+<body class="{{ bodyClass }}" style="{{ bodyStyle }}">
+    {{{body}}}
+    <p class="watermark">Foundry Virtual Tabletop | {{ver}}</p>
+</body>
+</html>

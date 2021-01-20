@@ -1,0 +1,340 @@
+<div>
+    <p class="notes">{{localize 'CONTROLS.Instructions'}}</p>
+
+    {{! GENERAL GAME CONTROLS }}
+    <h2>{{localize 'CONTROLS.HeaderGame'}}</h2>
+    <p class="notes">{{localize 'CONTROLS.HeaderGameNotes'}}</p>
+
+    <h3>{{ localize 'CONTROLS.KeyboardControls' }}</h3>
+    <ol class="hotkey-list">
+        <li>
+            <h4>{{localize 'CONTROLS.GameClose'}}</h4>
+            <div class="keys">
+                <span class="key">Esc</span>
+            </div>
+        </li>
+        <li>
+            <h4>{{localize 'CONTROLS.GameMenu'}}</h4>
+            <div class="keys">
+                <span class="key">Esc</span>
+            </div>
+        </li>
+        <li class="gm">
+            <h4>{{localize 'CONTROLS.GamePause'}}</h4>
+            <div class="keys">
+                <span class="key">Space</span>
+            </div>
+        </li>
+
+        <li>
+            <h4>{{localize 'CONTROLS.KeyHotbar'}}</h4>
+            <div class="keys">
+                <span class="key">1</span>
+                <span class="key">2</span>
+                <span class="key">3</span> ...
+                <span class="key">0</span>
+            </div>
+        </li>
+    </ol>
+
+    {{! CANVAS LAYER CONTROLS }}
+    <h2>{{localize 'CONTROLS.HeaderCanvas'}}</h2>
+    <p class="notes">{{localize 'CONTROLS.HeaderCanvasNotes'}}</p>
+
+    <h3>{{ localize 'CONTROLS.MouseControls' }}</h3>
+    <ol class="hotkey-list">
+        <li>
+            <h4>{{localize 'CONTROLS.CanvasSelect'}}</h4>
+            <div class="keys">
+                <span class="key">{{ localize 'CONTROLS.LeftClick' }}</span>
+            </div>
+        </li>
+
+        <li>
+            <h4>{{localize 'CONTROLS.CanvasSelectMany'}}</h4>
+            <div class="keys">
+                <span class="key">Shift</span> +
+                <span class="key">{{ localize 'CONTROLS.LeftClick' }}</span>
+            </div>
+        </li>
+
+        <li>
+            <h4>{{localize 'CONTROLS.CanvasLeftDrag'}}</h4>
+            <div class="keys">
+                <span class="key">{{localize 'CONTROLS.LeftClick'}}</span> +
+                <span class="key">{{localize 'CONTROLS.Drag'}}</span>
+            </div>
+        </li>
+
+        <li>
+            <h4>{{localize 'CONTROLS.CanvasSelectCancel'}}</h4>
+            <div class="keys">
+                <span class="key">{{ localize 'CONTROLS.RightClick' }}</span>
+            </div>
+        </li>
+
+        <li>
+            <h4>{{localize 'CONTROLS.CanvasPan'}}</h4>
+            <div class="keys">
+                <span class="key">{{localize 'CONTROLS.RightClick'}}</span> +
+                <span class="key">{{localize 'CONTROLS.Drag'}}</span>
+            </div>
+        </li>
+        <li>
+            <h4>{{localize 'CONTROLS.CanvasZoom'}}</h4>
+            <div class="keys">
+                <span class="key">{{localize 'CONTROLS.MouseWheel' }}</span>
+            </div>
+        </li>
+    </ol>
+
+    <h3>{{ localize 'CONTROLS.KeyboardControls' }}</h3>
+    <ol class="hotkey-list">
+        <li>
+            <h4>{{localize 'CONTROLS.KeyHighlight'}}</h4>
+            <div class="keys">
+                <span class="key">Alt</span>
+            </div>
+        </li>
+        <li>
+            <h4>{{localize 'CONTROLS.KeyCycle'}}</h4>
+            <div class="keys">
+                <span class="key">Tab</span>
+            </div>
+        </li>
+        <li>
+            <h4>{{localize 'CONTROLS.KeyPan'}}</h4>
+            <div class="keys">
+                <span class="key">Ctrl</span> +
+                <span class="key">&uarr;</span>
+                <span class="key">&darr;</span>
+                <span class="key">&larr;</span>
+                <span class="key">&rarr;</span>
+            </div>
+        </li>
+        <li>
+            <h4>{{localize 'CONTROLS.KeyZoomIn'}}</h4>
+            <div class="keys">
+                <span class="key">Page Up</span> or
+                Numpad <span class="key">+</span>
+            </div>
+        </li>
+        <li>
+            <h4>{{localize 'CONTROLS.KeyZoomOut'}}</h4>
+            <div class="keys">
+                <span class="key">Page Down</span> or
+                Numpad <span class="key">-</span>
+            </div>
+        </li>
+    </ol>
+
+    <h3>{{ localize 'CONTROLS.RulerTitle' }}</h3>
+    <ol class="hotkey-list">
+        <li>
+            <h4>{{localize 'CONTROLS.RulerMeasure'}}</h4>
+            <div class="keys">
+                <span class="key">Ctrl</span> +
+                <span class="key">{{localize 'CONTROLS.LeftDrag'}}</span>
+            </div>
+        </li>
+        <li>
+            <h4>{{localize 'CONTROLS.RulerWaypoint'}}</h4>
+            <div class="keys">
+                <span class="key">Ctrl</span> +
+                <span class="key">{{localize 'CONTROLS.LeftClick'}}</span>
+            </div>
+        </li>
+        <li>
+            <h4>{{localize 'CONTROLS.RulerMove'}}</h4>
+            <div class="keys">
+                <span class="key">Space</span> {{ localize 'CONTROLS.RulerWhile' }}
+            </div>
+        </li>
+    </ol>
+
+
+    {{! PLACEABLE OBJECT CONTROLS }}
+    <h2>{{localize 'CONTROLS.HeaderObjects'}}</h2>
+    <p class="notes">{{localize 'CONTROLS.HeaderObjectsNotes'}}</p>
+
+    <h3>{{ localize 'CONTROLS.MouseControls' }}</h3>
+    <ol class="hotkey-list">
+        <li>
+            <h4>{{localize 'CONTROLS.CanvasSelect'}}</h4>
+            <div class="keys">
+                <span class="key">{{ localize 'CONTROLS.LeftClick' }}</span>
+            </div>
+        </li>
+        <li>
+            <h4>{{localize 'CONTROLS.ObjectSheet'}}</h4>
+            <div class="keys">
+                {{ localize 'CONTROLS.Double' }} <span class="key">{{ localize 'CONTROLS.LeftClick' }}</span>
+            </div>
+        </li>
+        <li>
+            <h4>{{localize 'CONTROLS.ObjectHUD'}}</h4>
+            <div class="keys">
+                <span class="key">{{ localize 'CONTROLS.RightClick' }}</span>
+            </div>
+        </li>
+
+        <li>
+            <h4>{{localize 'CONTROLS.ObjectConfig'}}</h4>
+            <div class="keys">
+                {{ localize 'CONTROLS.Double' }} <span class="key">{{ localize 'CONTROLS.RightClick' }}</span>
+            </div>
+        </li>
+
+        <li>
+            <h4>{{localize 'CONTROLS.ObjectDrag'}}</h4>
+            <div class="keys">
+                <span class="key">{{localize 'CONTROLS.LeftClick'}}</span> +
+                <span class="key">{{ localize 'CONTROLS.Drag' }}</span> +
+                <span class="key">{{ localize 'CONTROLS.Drop' }}</span>
+            </div>
+        </li>
+
+        <li>
+            <h4>{{localize 'CONTROLS.ObjectNoSnap'}}</h4>
+            <div class="keys">
+                <span class="key">{{localize 'CONTROLS.Drag'}}</span> +
+                <span class="key">Shift</span> +
+                <span class="key">{{ localize 'CONTROLS.Drop' }}</span>
+            </div>
+        </li>
+
+        <li>
+            <h4>{{localize 'CONTROLS.ObjectDragCancel'}}</h4>
+            <div class="keys">
+                <span class="key">{{localize 'CONTROLS.RightClick'}}</span> {{ localize 'CONTROLS.During' }}
+                <span class="key">{{ localize 'CONTROLS.Drag' }}</span>
+            </div>
+        </li>
+        <li>
+            <h4>{{localize 'CONTROLS.ObjectRotateSlow'}}</h4>
+            <div class="keys">
+                <span class="key">Ctrl</span> + <span class="key">{{localize 'CONTROLS.MouseWheel'}}</span>
+            </div>
+        </li>
+        <li>
+            <h4>{{localize 'CONTROLS.ObjectRotateFast'}}</h4>
+            <div class="keys">
+                <span class="key">Shift</span> + <span class="key">Mouse-Wheel</span>
+            </div>
+        </li>
+    </ol>
+
+    <h3>{{ localize 'CONTROLS.KeyboardControls' }}</h3>
+    <ol class="hotkey-list">
+        <li>
+            <h4>{{localize 'CONTROLS.KeyMove'}}</h4>
+            <div class="keys">
+                <span class="key">W</span>
+                <span class="key">A</span>
+                <span class="key">S</span>
+                <span class="key">D</span> or
+                <span class="key">&uarr;</span>
+                <span class="key">&darr;</span>
+                <span class="key">&larr;</span>
+                <span class="key">&rarr;</span>
+            </div>
+        </li>
+        <li>
+            <h4>{{localize 'CONTROLS.KeyMoveDiag'}}</h4>
+            <div class="keys">
+                <span class="key">W</span> +
+                <span class="key">D</span> or
+                <span class="key">&uarr;</span> +
+                <span class="key">&rarr;</span>
+            </div>
+        </li>
+        <li>
+            <h4>{{localize 'CONTROLS.KeyMoveFace'}}</h4>
+            <div class="keys">
+                <span class="key">Shift</span> +
+                <span class="key">W</span>
+                <span class="key">A</span>
+                <span class="key">S</span>
+                <span class="key">D</span>
+            </div>
+        </li>
+        <li>
+            <h4>{{localize 'CONTROLS.KeyDelete'}}</h4>
+            <div class="keys">
+                <span class="key">Delete</span>
+            </div>
+        </li>
+
+        <li class="gm">
+            <h4>{{localize 'CONTROLS.KeyCopy'}}</h4>
+            <div class="keys">
+                <span class="key">Ctrl</span> + <span class="key">C</span>
+            </div>
+        </li>
+        <li class="gm">
+            <h4>{{localize 'CONTROLS.KeyPaste'}}</h4>
+            <div class="keys">
+                <span class="key">Ctrl</span> + <span class="key">V</span>
+            </div>
+        </li>
+        <li>
+            <h4>{{localize 'CONTROLS.KeyUndo'}}</h4>
+            <div class="keys">
+                <span class="key">Ctrl</span> + <span class="key">Z</span>
+            </div>
+        </li>
+    </ol>
+
+    {{! SPECIALIZED CONTROLS }}
+    <h2>{{localize 'CONTROLS.HeaderSpecial'}}</h2>
+    <p class="notes">{{localize 'CONTROLS.HeaderSpecialNotes'}}</p>
+
+    <h3>{{localize 'CONTROLS.TokenHeader'}}</h3>
+    <ol class="hotkey-list">
+        <li class="gm">
+            <h4>{{localize 'CONTROLS.TokenPlaceHidden'}}</h4>
+            <div class="keys">
+                <span class="key">Alt</span> + <span class="key">{{ localize "CONTROLS.Drop" }}</span>
+                when creating a Token.
+            </div>
+        </li>
+        <li>
+            <h4>{{localize 'CONTROLS.TokenTarget'}}</h4>
+            <div class="keys">
+                {{ localize 'CONTROLS.Double' }} <span class="key">{{ localize 'CONTROLS.RightClick' }}</span>
+            </div>
+        </li>
+    </ol>
+
+    <h3>{{localize 'CONTROLS.WallHeader'}}</h3>
+    <ol class="hotkey-list">
+        <li class="gm">
+            <h4>{{localize 'CONTROLS.WallChain'}}</h4>
+            <div class="keys">
+                Hold <span class="key">Ctrl</span>
+            </div>
+        </li>
+        <li class="gm">
+            <h4>{{localize 'CONTROLS.WallSelectChain'}}</h4>
+            <div class="keys">
+                <span class="key">Alt</span> + <span class="key">{{localize 'CONTROLS.LeftClick'}}</span>
+            </div>
+        </li>
+    </ol>
+
+    <h3>{{localize 'CONTROLS.DrawingHeader'}}</h3>
+    <ol class="hotkey-list">
+        <li>
+            <h4>{{localize 'CONTROLS.DrawingTextConfirm'}}</h4>
+            <div class="keys">
+                <span class="key">Enter</span>
+            </div>
+        </li>
+        <li>
+            <h4>{{localize 'CONTROLS.DrawingTextCancel'}}</h4>
+            <div class="keys">
+                <span class="key">Escape</span>
+            </div>
+        </li>
+    </ol>
+</div>

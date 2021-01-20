@@ -1,0 +1,68 @@
+<form method="POST" autocomplete="off" enctype="multipart/form-data">
+    <div class="form-group">
+        <label>World Title</label>
+        <div class="form-fields">
+            <input type="text" name="title" value="{{world.data.title}}" placeholder="Your World Name" required/>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Data Path</label>
+        <div class="form-fields">
+            <input type="text" name="path" value="Data/worlds/" disabled/>
+            <input type="text" name="name" value="{{world.id}}" placeholder="world-name" {{#if isCreate}}required{{else}}disabled{{/if}}/>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Game System</label>
+        <div class="form-fields">
+            <select name="system" {{#if isCreate}}required{{else}}disabled{{/if}}>
+                <option value=""></option>
+                {{#select world.system.id}}
+                {{#each systems}}
+                <option value="{{this.id}}">{{this.data.title}}</option>
+                {{/each}}
+                {{/select}}
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group banner-image">
+        <label>Background Image</label>
+        <div class="form-fields">
+            {{filePicker target="background" type="image"}}
+            <input type="text" name="background" placeholder="path/image.png" value="{{world.data.background}}" data-dtype="String"/>
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <label>Next Session</label>
+        <div class="form-fields">
+            <input type="date" name="nextSession" value="{{ nextDate }}">
+            <input type="time" name="nextSession" value="{{ nextTime }}">
+        </div>
+    </div>
+
+    {{#unless isCreate}}
+    <div class="form-group">
+        <label>Reset Active Modules</label>
+        <input type="checkbox" name="disableModules" />
+    </div>
+
+    <div class="form-group">
+        <label>Reset User Access Keys</label>
+        <input type="checkbox" name="resetKeys"/>
+    </div>
+    {{/unless}}
+
+    <div class="form-group-stacked">
+        <label class="world-desc">World Description</label>
+        {{editor content=world.data.description target="description" button=false}}
+    </div>
+
+    <button type="submit">
+        <i class="fas fa-globe"></i> {{submitText}}
+    </button>
+</form>

@@ -1,0 +1,158 @@
+<form class="flexcol" autocomplete="off" onsubmit="event.preventDefault();">
+
+    <!-- Sheet Navigation Tabs -->
+    <nav class="sheet-tabs tabs">
+        {{#unless isDefault}}
+        <a class="item" data-tab="position"><i class="fas fa-map-marker-alt"></i> {{ localize "DRAWING.TabPosition" }}</a>
+        {{/unless}}
+        <a class="item" data-tab="lines"><i class="fas fa-paint-brush"></i> {{ localize "DRAWING.TabLines" }}</a>
+        <a class="item" data-tab="fill"><i class="fas fa-fill-drip"></i> {{ localize "DRAWING.TabFill" }}</a>
+        <a class="item" data-tab="text"><i class="fas fa-font"></i> {{ localize "DRAWING.TabText" }}</a>
+    </nav>
+
+    <!-- Position Tab -->
+    {{#unless isDefault}}
+    <div class="tab" data-tab="position">
+        <p class="notes">{{ localize "DRAWING.NotePosition" }}</p>
+        <div class="form-group">
+            <label>{{ localize "DRAWING.Author" }}</label>
+            <input type="text" name="author" value="{{author}}" disabled/>
+        </div>
+
+        <div class="form-group">
+            <label>{{ localize "DRAWING.PosX" }} <span class="units">({{ localize "Pixels" }})</span></label>
+            <input type="text" name="x" value="{{object.x}}" data-dtype="Number"/>
+        </div>
+
+        <div class="form-group">
+            <label>{{ localize "DRAWING.PosY" }} <span class="units">({{ localize "Pixels" }})</span></label>
+            <input type="text" name="y" value="{{object.y}}" data-dtype="Number"/>
+        </div>
+
+        <div class="form-group">
+            <label for="width">{{ localize "DRAWING.Width" }} <span class="units">({{ localize "Pixels" }})</span></label>
+            <input type="text" name="width" value="{{object.width}}" data-dtype="Number"/>
+        </div>
+
+        <div class="form-group">
+            <label for="height">{{ localize "DRAWING.Height" }} <span class="units">({{ localize "Pixels" }})</span></label>
+            <input type="text" name="height" value="{{object.height}}" data-dtype="Number"/>
+        </div>
+
+        <div class="form-group">
+            <label for="height">{{ localize "DRAWING.Rotation" }} <span class="units">({{ localize "Degrees" }})</span></label>
+            <input type="text" name="rotation" value="{{object.rotation}}" data-dtype="Number"/>
+        </div>
+
+        <div class="form-group">
+            <label for="z">{{ localize "DRAWING.ZIndex" }}</label>
+            <input type="text" name="z" value="{{object.z}}" data-dtype="Number"/>
+        </div>
+    </div>
+    {{/unless}}
+
+    <!-- Lines Tab -->
+    <div class="tab" data-tab="lines">
+        <p class="notes">{{ localize "DRAWING.NoteLines" }}</p>
+        <div class="form-group">
+            <label for="strokeWidth">{{ localize "DRAWING.LineWidth" }} <span class="units">({{ localize "Pixels" }})</span></label>
+            <input type="text" name="strokeWidth" value="{{object.strokeWidth}}" data-dtype="Number"/>
+        </div>
+
+        <div class="form-group">
+            <label for="strokeColor">{{ localize "DRAWING.StrokeColor" }}</label>
+            <input class="color" type="text" name="strokeColor" value="{{object.strokeColor}}"/>
+            <input type="color" value="{{object.strokeColor}}" data-edit="strokeColor"/>
+        </div>
+
+        <div class="form-group">
+            <label for="strokeAlpha">{{ localize "DRAWING.LineOpacity" }}</label>
+            <input type="range" name="strokeAlpha" value="{{object.strokeAlpha}}" min="0.0" max="1.0" step="0.10"
+                   data-dtype="Number"/>
+            <span class="range-value">{{object.strokeAlpha}}</span>
+        </div>
+
+        <div class="form-group">
+            <label for="bezierFactor">{{ localize "DRAWING.SmoothingFactor" }}</label>
+            <input type="range" name="bezierFactor" value="{{object.bezierFactor}}" min="0.0" max="1.0" step="0.10"
+            data-dtype="Number"/>
+            <span class="range-value">{{object.bezierFactor}}</span>
+            <p class="notes">{{ localize "DRAWING.SmoothingFactorHint" }}</p>
+        </div>
+    </div>
+
+    <!-- Fill Tab -->
+    <div class="tab" data-tab="fill">
+        <p class="notes">{{ localize "DRAWING.NoteFill" }}</p>
+        <div class="form-group">
+            <label for="fillType">{{ localize "DRAWING.FillTypes" }}</label>
+            <select name="fillType" data-dtype="Number">
+                {{ selectOptions fillTypes selected=object.fillType localize=true}}
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="fillColor">{{ localize "DRAWING.FillColor" }}</label>
+            <input class="color" type="text" name="fillColor" value="{{object.fillColor}}"/>
+            <input type="color" value="{{object.fillColor}}" data-edit="fillColor"/>
+        </div>
+
+        <div class="form-group">
+            <label for="fillAlpha">{{ localize "DRAWING.FillOpacity" }}</label>
+            <input type="range" name="fillAlpha" value="{{object.fillAlpha}}" min="0.0" max="1.0" step="0.10"
+                   data-dtype="Number"/>
+            <span class="range-value">{{object.fillAlpha}}</span>
+        </div>
+
+        <div class="form-group">
+            <label for="texture">{{ localize "DRAWING.FillTexture" }}</label>
+            <div class="form-fields">
+                {{filePicker target="texture" type="image"}}
+                <input class="image" type="text" name="texture" placeholder="path/image.png" value="{{object.texture}}"/>
+            </div>
+        </div>
+    </div>
+
+    <!-- Text Tab -->
+    <div class="tab" data-tab="text">
+        <p class="notes">{{ localize "DRAWING.NoteText" }}</p>
+
+        <div class="form-group">
+            <label for="height">{{ localize "DRAWING.TextLabel" }}</label>
+            <input type="text" name="text" value="{{object.text}}"/>
+        </div>
+
+        <div class="form-group">
+            <label for="fontFamily">{{ localize "DRAWING.FontFamily" }}</label>
+            <select name="fontFamily">
+                {{selectOptions fontFamilies selected=object.fontFamily}}
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="fontSize">{{ localize "DRAWING.FontSize" }}</label>
+            <input type="text" name="fontSize" value="{{object.fontSize}}" data-dtype="Number"/>
+        </div>
+
+        <div class="form-group">
+            <label for="textColor">{{ localize "DRAWING.TextColor" }}</label>
+            <input class="color" type="text" name="textColor" value="{{object.textColor}}"/>
+            <input type="color" value="{{object.textColor}}" data-edit="textColor"/>
+        </div>
+
+        <div class="form-group">
+            <label for="textAlpha">{{ localize "DRAWING.TextOpacity" }}</label>
+            <input type="range" name="textAlpha" value="{{object.textAlpha}}" min="0.0" max="1.0" step="0.10"
+                   data-dtype="Number"/>
+            <span class="range-value">{{object.textAlpha}}</span>
+        </div>
+    </div>
+
+    <!-- Sheet Footer -->
+    <footer class="sheet-footer flexrow">
+        {{#if options.configureDefault}}
+        <button type="button" name="resetDefault"><i class="fas fa-undo"></i> {{ localize "DRAWING.SubmitReset" }}</button>
+        {{/if}}
+        <button type="submit" name="submit" value="1"><i class="far fa-save"></i> {{localize submitText}}</button>
+    </footer>
+</form>

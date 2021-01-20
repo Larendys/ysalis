@@ -1,0 +1,17 @@
+<form autocomplete="off">
+    <div class="form-group">
+        <label>{{ localize "PLAYLIST.Name" }}</label>
+        <input type="text" name="name" placeholder="Name" value="{{name}}" data-dtype="String"/>
+    </div>
+    <div class="form-group">
+        <label>{{ localize "PLAYLIST.Mode" }}</label>
+        <select name="mode" data-dtype="Number">
+            {{#select mode}}
+            {{#each modes as |m label|}}
+            <option value="{{m}}">{{label}}</option>
+            {{/each}}
+            {{/select}}
+        </select>
+    </div>
+    <button type="submit" name="submit" value="1"><i class="far fa-save"></i> {{ localize "PLAYLIST.Update" }}</button>
+</form>

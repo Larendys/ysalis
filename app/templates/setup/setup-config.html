@@ -1,0 +1,377 @@
+<form id="setup-configuration" class="flexcol dark" autocomplete="off">
+
+    <header>
+        <h1>Foundry Virtual Tabletop &bull; {{localize "SETUP.Title"}}</h1>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <nav class="sheet-tabs tabs" data-group="components">
+        <a class="item" data-tab="worlds"><i class="fas fa-globe-asia"></i> {{localize "SETUP.Worlds"}}</a>
+        <a class="item" data-tab="systems"><i class="fas fa-dice"></i> {{localize "SETUP.Systems"}}</a>
+        <a class="item" data-tab="modules"><i class="fas fa-plug"></i> {{localize "SETUP.Modules"}}</a>
+        <a class="item" data-tab="configuration"><i class="fas fa-cogs"></i> {{localize "SETUP.Configuration"}}</a>
+        <a class="item" data-tab="update">
+            <i class="fas fa-cloud-download-alt"></i> {{localize "SETUP.Update"}}
+            {{#if coreUpdate}}
+            <i class="notification-pip fas fa-exclamation-circle" title="{{ coreUpdate }}"></i>
+            {{/if}}
+        </a>
+    </nav>
+
+    <!-- Main Content Section -->
+    <section id="config-tabs" class="content flexcol">
+
+        <!-- Worlds Tab -->
+        <div class="tab" data-tab="worlds" data-group="components">
+            <ul id="world-list" class="directory-list package-list" data-package-type="world">
+                {{#each worlds}}
+                <li class="package flexrow" data-package-id="{{this.id}}">
+                    <div class="package-overview flexrow">
+                       <h3 class="package-title">
+                            {{this.data.title}}
+                        </h3>
+                        {{#if this.unavailable}}<span class="tag unavailable">{{this.unavailable}}</span>{{/if}}
+                        {{#if this.incompatible}}<span class="tag unknown">{{this.incompatible}}</span>{{/if}}
+                        {{#if this.data.scripts}}
+                        <span class="tag javascript">JavaScript</span>
+                        {{/if}}
+                        {{#if this.data.styles}}
+                        <span class="tag css">CSS</span>
+                        {{/if}}
+                        {{#if this.data.packs}}
+                        <span class="tag compendium">Compendium</span>
+                        {{/if}}
+                        <span class="tag version">Core Version {{ this.data.coreVersion }}</span>
+                    </div>
+
+                    {{#if this.shortDesc}}
+                    <div class="package-description">
+                        {{{this.shortDesc}}}
+                    </div>
+                    {{/if}}
+
+                    <ul class="package-metadata">
+                        <li><strong>{{localize "System"}}:</strong> {{this.system.data.title}}</li>
+                        <li><strong>{{localize "Path"}}:</strong> {{this.path}}</li>
+                    </ul>
+
+                    <div class="package-controls">
+                        <button class="uninstall" type="button">
+                            <i class="fas fa-trash"></i>
+                            <label>{{localize "SETUP.WorldDelete"}}</label>
+                        </button>
+                        <button class="edit-world" type="button" data-world="{{ this.id }}">
+                            <i class="fas fa-edit"></i> {{localize "SETUP.WorldEdit"}}
+                        </button>
+                        <button type="submit" name="action" value="launchWorld" data-world="{{ this.id }}">
+                            <i class="fas fa-play"></i> {{localize "SETUP.WorldLaunch"}}
+                        </button>
+                    </div>
+                </li>
+                {{/each}}
+            </ul>
+
+            <footer class="directory-footer flexrow">
+                <button class="install-package" type="button">
+                    <i class="fas fa-download"></i>
+                    <label>{{localize "SETUP.InstallWorld"}}</label>
+                </button>
+                <button id="create-world" type="button">
+                    <i class="fas fa-globe-asia"></i>
+                    <label>{{localize "SETUP.WorldCreate"}}</label>
+                </button>
+                <div class="progress-bar">
+                    <span class="bar"></span>
+                    <label class="pct"></label>
+                </div>
+            </footer>
+        </div>
+
+        <!-- Systems Tab -->
+        <div class="tab" data-tab="systems" data-group="components">
+            <ul id="system-list" class="directory-list package-list" data-package-type="system">
+                {{#each systems}}
+                <li class="package flexrow" data-package-id="{{this.id}}">
+                    <div class="package-overview flexrow">
+                       <h3 class="package-title">
+                            {{this.data.title}}
+                        </h3>
+                        {{#if this.unavailable}}<span class="tag unavailable">{{this.unavailable}}</span>{{/if}}
+                        {{#if this.incompatible}}<span class="tag unknown">{{this.incompatible}}</span>{{/if}}
+                        {{#if this.data.scripts}}
+                        <span class="tag javascript">JavaScript</span>
+                        {{else if this.data.esmodules}}
+                        <span class="tag javascript">JavaScript</span>
+                        {{/if}}
+                        {{#if this.data.styles}}
+                        <span class="tag css">CSS</span>
+                        {{/if}}
+                        {{#if this.data.packs}}
+                        <span class="tag compendium">Compendium</span>
+                        {{/if}}
+                        {{#if this.data.languages}}
+                        <span class="tag languages">Localization</span>
+                        {{/if}}
+                        <span class="tag version">System Version {{ this.data.version }}</span>
+                    </div>
+
+                    <div class="package-description">
+                        {{{this.data.description}}}
+                    </div>
+
+                    <ul class="package-metadata">
+                        <li><strong>{{localize "Author"}}:</strong> {{this.data.author}}</li>
+                        <li><strong>{{localize "Path"}}:</strong> {{this.path}}</li>
+                        {{#if this.data.url}}
+                        <li><strong>{{localize "URL"}}:</strong> <a href="{{this.data.url}}" target="_blank" rel="noreferrer noopener">{{this.data.url}}</a></li>
+                        {{/if}}
+                    </ul>
+
+                     <div class="package-controls">
+                        <button class="uninstall" type="button">
+                            <i class="fas fa-trash"></i>
+                            <label>{{localize "SETUP.Uninstall"}}</label>
+                        </button>
+                        {{#if this.data.manifest}}
+                        <button class="update" type="button" data-state="check">
+                            <i class="fas fa-sync-alt"></i>
+                            <label>{{localize "SETUP.UpdateCheck"}}</label>
+                        </button>
+                        {{/if}}
+                    </div>
+                </li>
+                {{/each}}
+            </ul>
+
+            <footer class="setup-footer flexrow">
+                <button class="install-package" type="button">
+                    <i class="fas fa-download"></i>
+                    <label>{{localize "SETUP.InstallSystem"}}</label>
+                </button>
+                <button class="update-packages" type="button">
+                    <i class="fas fa-cloud-download-alt"></i>
+                    <label>{{localize "SETUP.UpdateAll"}}</label>
+                </button>
+                <div class="progress-bar">
+                    <span class="bar"></span>
+                    <label class="pct"></label>
+                </div>
+            </footer>
+        </div>
+
+        <!-- Modules Tab -->
+        <div class="tab" data-tab="modules" data-group="components">
+            <ul id="module-list" class="directory-list package-list" data-package-type="module">
+                {{#each modules}}
+                <li class="package flexrow" data-package-id="{{this.data.name}}">
+                  <div class="package-overview flexrow">
+                        <h3 class="package-title">
+                            {{this.data.title}}
+                        </h3>
+                        {{#if this.unavailable}}<span class="tag unavailable">{{this.unavailable}}</span>{{/if}}
+                        {{#if this.incompatible}}<span class="tag unknown">{{this.incompatible}}</span>{{/if}}
+                        {{#if this.data.scripts}}
+                        <span class="tag javascript">JavaScript</span>
+                        {{else if this.data.esmodules}}
+                        <span class="tag javascript">JavaScript</span>
+                        {{/if}}
+                        {{#if this.data.styles}}
+                        <span class="tag css">CSS</span>
+                        {{/if}}
+                        {{#if this.data.packs}}
+                        <span class="tag compendium">Compendium Packs</span>
+                        {{/if}}
+                        {{#if this.data.languages}}
+                        <span class="tag languages">Localization</span>
+                        {{/if}}
+                        <span class="tag version">Module Version {{ this.data.version }}</span>
+                    </div>
+
+                    <div class="package-description">
+                        {{{this.data.description}}}
+                    </div>
+
+                    <ul class="package-metadata">
+                        <li><strong>{{localize "Author"}}:</strong> {{this.data.author}}</li>
+                        <li><strong>{{localize "Path"}}:</strong> {{this.path}}</li>
+                        {{#if this.data.url}}
+                        <li><strong>{{localize "URL"}}:</strong> <a href="{{this.data.url}}" target="_blank" rel="noreferrer noopener">{{this.data.url}}</a></li>
+                        {{/if}}
+                        {{#if this.dependencies}}
+                        <li>
+                            <strong>{{ localize "MODMANAGE.Dependencies" }}:</strong>
+                            {{#each this.dependencies}}
+                            <span class="tag">{{ this }}</span>
+                            {{/each}}
+                        </li>
+                        {{/if}}
+                    </ul>
+
+                     <div class="package-controls">
+                        <button class="uninstall" type="button">
+                            <i class="fas fa-trash"></i>
+                            <label>{{localize "SETUP.Uninstall"}}</label>
+                        </button>
+                        {{#if this.data.manifest}}
+                        <button class="update" type="button" data-state="check">
+                            <i class="fas fa-sync-alt"></i>
+                            <label>{{localize "SETUP.UpdateCheck"}}</label>
+                        </button>
+                        {{/if}}
+                    </div>
+                </li>
+                {{/each}}
+            </ul>
+
+            <footer class="setup-footer flexrow">
+                <button class="install-package" type="button">
+                    <i class="fas fa-download"></i>
+                    <label>{{localize "SETUP.InstallModule"}}</label>
+                </button>
+                <button class="update-packages" type="button">
+                    <i class="fas fa-cloud-download-alt"></i> 
+                    <label>{{localize "SETUP.UpdateAll"}}</label>
+                </button>
+                <div class="progress-bar">
+                    <span class="bar"></span>
+                    <label class="pct"></label>
+                </div>
+            </footer>
+        </div>
+
+        <!-- Configuration Tab -->
+        <div id="configuration" class="tab flexcol" data-tab="configuration" data-group="components">
+            <p class="notification warning">{{localize "SETUP.ConfigurationWarning" }}</p>
+
+            <div class="form-group">
+                <label>{{localize "SETUP.AdminKeyLabel"}}</label>
+                <input type="password" name="options.adminKey" value="{{{adminKey}}}"/>
+                <p class="notes">{{localize "SETUP.AdminKeyHint"}}</p>
+            </div>
+            <div class="form-group">
+                <label>{{localize "SETUP.PortLabel"}}</label>
+                <div class="form-fields">
+                    <input type="text" name="options.port" data-dtype="Number" value="{{ options.port }}"/>
+                    <label class="checkbox-label">
+                        {{localize "SETUP.UPNPLabel"}}
+                        <input type="checkbox" name="options.upnp" {{ checked options.upnp }}/>
+                    </label>
+                </div>
+                <p class="notes">{{localize "SETUP.PortHint"}}</p>
+            </div>
+
+            <div class="form-group">
+                <label>{{localize "SETUP.DataPathLabel"}}</label>
+                <input type="text" name="options.dataPath" value="{{ options.dataPath }}"/>
+                <p class="notes">{{localize "SETUP.DataPathHint"}}</p>
+            </div>
+
+            <div class="form-group">
+                <label>{{localize "SETUP.WorldLabel"}}</label>
+                <select name="options.world">
+                    {{#select options.world}}
+                    <option value=""></option>
+                    {{#each worlds}}
+                    <option value="{{ this.id }}">{{ this.data.title }}</option>
+                    {{/each}}
+                    {{/select}}
+                </select>
+                <p class="notes">{{localize "SETUP.WorldHint"}}</p>
+            </div>
+
+            <div class="form-group">
+                <label>{{localize "SETUP.DefaultLanguage"}}</label>
+                <select name="options.language">
+                    {{#select options.language}}
+                    {{#each languages as |language|}}
+                    <optgroup label="{{language.label}}">
+                        {{#each language.modules as |module|}}
+                        <option value="{{language.id}}.{{module.id}}">{{ language.label }} - {{module.label}}</option>
+                        {{/each}}
+                    </optgroup>
+                    {{/each}}
+                    {{/select}}
+                </select>
+                <p class="notes">{{localize "SETUP.DefaultLanguageHint"}}</p>
+            </div>
+
+            <div class="form-group">
+                <label>{{ localize "SETUP.MinifyFiles" }}</label>
+                <input type="checkbox" name="options.minifyStaticFiles" {{ checked options.minifyStaticFiles }}/>
+                <p class="notes">{{localize "SETUP.MinifyFilesHint"}}</p>
+            </div>
+
+            <div class="form-group">
+                <label>{{localize "SETUP.SSLCertLabel"}}</label>
+                <input type="text" name="options.sslCert" value="{{ options.sslCert }}"/>
+            </div>
+            <div class="form-group">
+                <label>{{localize "SETUP.SSLKeyLabel"}}</label>
+                <input type="text" name="options.sslKey" value="{{ options.sslKey }}"/>
+                <p class="notes">{{localize "SETUP.SSLHint"}}</p>
+            </div>
+
+            <div class="form-group">
+                <label>{{localize "SETUP.AWSLabel"}}</label>
+                <input type="text" name="options.awsConfig" value="{{ options.awsConfig }}"/>
+                <p class="notes">{{localize "SETUP.AWSHint"}}</p>
+            </div>
+
+            <footer class="setup-footer flexrow">
+               <button type="submit" name="action" value="adminLogout">
+                    <i class="fas fa-door-open"></i> {{ localize "SETUP.AdminLogout" }}
+                </button>
+                 <button id="admin-save" type="button" name="action" value="adminConfigure">
+                    <i class="fas fa-save"></i> {{ localize "Save Changes" }}
+                </button>
+            </footer>
+        </div>
+
+        <!-- Update Tab -->
+        <div id="update" class="tab flexcol" data-tab="update" data-group="components">
+            {{#if coreUpdate}}
+            <p class="notification info">{{ coreUpdate }}</p>
+            {{/if}}
+            <p class="notification warning">{{localize "SETUP.UpdateWarning" }}</p>
+
+            <h2>{{ localize "SETUP.UpdateHeader" }}</h2>
+            <div class="form-group">
+                <label>Current Version</label>
+                <div class="form-fields">
+                    <input type="text" value="{{ coreVersion }}" disabled/>
+                </div>
+                <p class="notes">{{ coreVersionHint }}</p>
+            </div>
+
+            <div class="form-group">
+                <label>{{ localize "SETUP.UpdateChannel" }}</label>
+                <div class="form-fields">
+                    <select name="updateChannel">
+                        {{#select options.updateChannel }}
+                        {{#each updateChannels as |label c| }}
+                        <option value="{{ c }}">{{ label }}</option>
+                        {{/each}}
+                        {{/select}}
+                    </select>
+                    <label id="force-update" class="checkbox-label">
+                        Force Update?
+                        <input type="checkbox" name="forceUpdate"/>
+                    </label>
+                </div>
+                <p class="notes">{{ localize "SETUP.UpdateChannelHint" }}</p>
+                <p class="notes">{{localize "SETUP.ForceUpdateHint"}}</p>
+            </div>
+
+            <footer class="setup-footer flexcol">
+                <div class="progress-bar">
+                    <span class="bar"></span>
+                    <label class="pct"></label>
+                </div>
+                <button id="update-core" type="button" name="action" value="updateCheck">
+                    <i class="fas fa-cloud-download-alt"></i>
+                    <label>{{localize "SETUP.UpdateCheckFor"}}</label>
+                </button>
+            </footer>
+        </div>
+    </section>
+</form>

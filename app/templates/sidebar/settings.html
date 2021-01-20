@@ -1,0 +1,60 @@
+<section class="sidebar-tab tab" id="settings" data-tab="settings">
+    <h2>{{localize 'SETTINGS.InfoHeader'}}</h2>
+    <ul id="game-details">
+        <li class="version">Foundry Virtual Tabletop <span>{{coreVersion}}</span></li>
+        <li class="system">{{system.data.title}} <span>{{system.data.version}}</span></li>
+        <li class="modules">Active Modules <span>{{ modules }}</span></li>
+    </ul>
+
+    <h2>{{localize 'SETTINGS.SettingsHeader'}}</h2>
+    <div id="settings-game">
+        <button data-action="configure">
+            <i class="fas fa-cogs"></i> {{localize 'SETTINGS.Configure'}}
+        </button>
+        <button data-action="modules">
+            <i class="fas fa-cube"></i>
+            {{#if canConfigure}}{{localize 'SETTINGS.ManageModules'}}
+            {{else}}{{localize "SETTINGS.ViewModules"}}
+            {{/if}}
+        </button>
+        {{#if canSetup }}
+        <button data-action="players">
+            <i class="fas fa-users"></i> {{localize 'SETTINGS.Players'}}
+        </button>
+        {{#if coreUpdate}}
+        <button data-action="setup">
+            <i class="fas fa-cloud-download-alt"></i>{{ localize "SETUP.Update" }}
+        </button>
+        {{/if}}
+        <button data-action="setup">
+            <i class="fas fa-home"></i> {{localize 'SETTINGS.Setup'}}
+        </button>
+        {{/if}}
+    </div>
+
+    <h2>{{localize 'SETTINGS.DocsHeader'}}</h2>
+    <div id="settings-documentation">
+        <button data-action="controls">
+            <i class="fas fa-gamepad"></i> {{localize 'SETTINGS.Controls'}}
+        </button>
+        <button data-action="docs">
+            <i class="fas fa-book"></i> {{localize 'SETTINGS.Docs'}}
+        </button>
+        <button data-action="wiki">
+            <i class="fas fa-landmark"></i> {{localize 'SETTINGS.Wiki'}}
+        </button>
+    </div>
+
+
+    <h2>{{localize 'SETTINGS.AccessHeader'}}</h2>
+    <div id="settings-access">
+        {{#if user.isGM }}
+        <button data-action="invitations">
+            <i class="fas fa-wifi"></i> {{localize 'SETTINGS.Invite'}}
+        </button>
+        {{/if}}
+        <button data-action="logout">
+            <i class="fas fa-door-closed"></i> {{localize 'SETTINGS.Logout'}}
+        </button>
+    </div>
+</section>

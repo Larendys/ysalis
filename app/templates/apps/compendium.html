@@ -1,0 +1,19 @@
+<div class="sidebar-tab compendium flexcol" data-pack="{{collection}}">
+
+    <!-- Directory Header -->
+    <header class="directory-header flexrow">
+        <div class="header-search flexrow">
+            <i class="fas fa-search"></i>
+            <input type="text" name="search" value="" placeholder="Search" autocomplete="off"/>
+        </div>
+    </header>
+
+    <ol class="directory-list">
+        {{#each index}}
+        <li class="directory-item flexrow {{../cssClass}}" data-entry-id="{{this._id}}">
+            <img class="profile" data-src="{{this.img}}" title="{{this.name}}"/>
+            <h4 class="entry-name"><a>{{this.name}}</a></h4>
+        </li>
+        {{/each}}
+    </ol>
+</div>

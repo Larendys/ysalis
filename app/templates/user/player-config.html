@@ -1,0 +1,36 @@
+<form autocomplete="off" onsubmit="event.preventDefault();">
+    <div class="form-group">
+        <label>{{localize 'PLAYERS.PlayerAvatar'}}</label>
+        <img class="avatar" src="{{user.avatar}}" data-edit="avatar" title="{{actor.name}}" height="64" width="64"/>
+    </div>
+
+    <div class="form-group">
+        <label>{{localize 'PLAYERS.PlayerColor'}}</label>
+        <input type="color" name="color" value="{{user.data.color}}" data-dtype="String"/>
+    </div>
+
+    <div class="form-group stacked">
+        <label>{{localize 'PLAYERS.CharSelect'}}</label>
+        {{#if user.character}}
+        <ul class="directory-list">
+            <li class="actor directory-item flexrow" data-actor-id="{{user.character._id}}">
+                <img class="profile actor-profile" src="{{user.character.img}}" title="{{user.character.name}}"/>
+                <h3 class="entity-name"><a>{{user.character.name}}</a></h3>
+            </li>
+        </ul>
+        <button type="reset" name="release" value="1"><i class="fas fa-ban"></i> {{localize 'PLAYERS.CharRelease'}}</button>
+        {{else}}
+        <ul id="available-characters" class="directory-list">
+        {{#each actors}}
+            <li class="actor directory-item flexrow" data-actor-id="{{this._id}}">
+                <img class="profile actor-profile" src="{{this.img}}" title="{{this.name}}"/>
+                <h3 class="entity-name"><a>{{this.name}}</a></h3>
+            </li>
+        {{/each}}
+        </ul>
+        <input type="hidden" name="character" value=""/>
+        {{/if}}
+    </div>
+
+    <button type="submit" name="submit" value="1"><i class="fas fa-save"></i> {{localize 'PLAYERS.SaveConfig'}}</button>
+</form>

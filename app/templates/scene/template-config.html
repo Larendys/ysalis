@@ -1,0 +1,64 @@
+<form autocomplete="off" onsubmit="event.preventDefault();">
+    <p class="notes">Configure the placement and display of the measurement template.</p>
+
+    <div class="form-group">
+        <label>Template Type</label>
+        <select name="t" data-dtype="String">
+            {{#select object.t}}
+            {{#each templateTypes as |type t|}}
+            <option value="{{t}}">{{type}}</option>
+            {{/each}}
+            {{/select}}
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label>X-Position <span class="units">(pixels)</span></label>
+        <input type="text" name="x" placeholder="X" value="{{object.x}}" data-dtype="Number"/>
+    </div>
+
+    <div class="form-group">
+        <label>Y-Position <span class="units">(pixels)</span></label>
+        <input type="text" name="y" placeholder="Y" value="{{object.y}}" data-dtype="Number"/>
+    </div>
+
+    <div class="form-group">
+        <label>Direction <span class="units">(degrees)</span></label>
+        <input type="text" name="direction" placeholder="Direction" value="{{object.direction}}" data-dtype="Number"/>
+    </div>
+
+    <div class="form-group">
+        <label>Angle <span class="units">(degrees)</span></label>
+        <input type="text" name="angle" placeholder="Angle" value="{{object.angle}}" data-dtype="Number"/>
+    </div>
+
+    <div class="form-group">
+        <label>Distance <span class="units">({{gridUnits}})</span></label>
+        <input type="text" name="distance" placeholder="Distance" value="{{object.distance}}" data-dtype="Number"/>
+    </div>
+
+    <div class="form-group">
+        <label>Width <span class="units">({{gridUnits}})</span></label>
+        <input type="text" name="width" placeholder="Width" value="{{object.width}}" data-dtype="Number"/>
+    </div>
+
+    <div class="form-group">
+        <label>Border Color:</label>
+        <input type="color" name="borderColor" value="{{object.borderColor}}" data-dtype="String"/>
+    </div>
+
+    <div class="form-group">
+        <label>Fill Color:</label>
+        <input type="color" name="fillColor" value="{{object.fillColor}}" data-dtype="String"/>
+    </div>
+
+    <div class="form-group">
+        <label>Template Texture:</label>
+        <div class="form-fields">
+            {{filePicker target="texture" type="image"}}
+            <input class="image" type="text" name="texture" placeholder="path/image.png" value="{{object.texture}}" data-dtype="String"/>
+        </div>
+    </div>
+
+    <button type="submit" name="submit" value="1"><i class="far fa-save"></i> {{data.submitText}} Template</button>
+</form>

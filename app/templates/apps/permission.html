@@ -1,0 +1,24 @@
+<form id="permission-control">
+    <p class="notes">{{ instructions }}</p>
+
+    <div class="form-group">
+        <label>{{ localize "PERMISSION.AllPlayers" }}</label>
+        <select name="default">
+            {{selectOptions defaultLevels selected=currentDefault}}
+        </select>
+    </div>
+    <hr/>
+
+    {{#each users}}
+    <div class="form-group {{#if this.user.isGM}}hidden{{/if}}">
+        <label>{{this.user.name}}</label>
+        <select name="{{this.user._id}}">
+            {{selectOptions ../playerLevels selected=this.level}}
+        </select>
+    </div>
+    {{/each}}
+
+    <button type="submit" name="submit">
+        <i class="far fa-save"></i> {{ localize "Save Changes" }}
+    </button>
+</form>

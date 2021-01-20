@@ -1,0 +1,80 @@
+<form class="flexrow">
+    <nav class="categories">
+        <h3>{{ localize "SETUP.PackageCategories" }}</h3>
+        {{#each tags as |tag id|}}
+        <div class="category{{ tag.css }}">
+            <a class="filter" data-category="{{ id }}">{{ tag.label }}</a>
+            <span class="count">[{{ tag.count }}]</span>
+        </div>
+        {{/each}}
+    </nav>
+
+    <div class="packages flexcol">
+        <div class="form-group">
+            <label>{{ localize "SETUP.PackageFilter" }}</label>
+            <input name="filter" type="text" placeholder="Package Name" value=""/>
+            <div class="visibilities">
+                {{#each visibility}}
+                <a class="visibility{{ this.css }}" data-visibility="{{ this.id }}">{{ localize this.label }}</a>
+                {{/each}}
+            </div>
+        </div>
+
+        <ul class="package-list">
+            {{#if loading}}
+            <li class="packages-loading">
+                <h3>{{ localize "SETUP.PackagesLoading" }}</h3>
+                <i class="fa fa-spinner fa-spin"></i>
+            </li>
+            {{/if}}
+
+            {{#each packages}}
+            <li class="package flexrow {{ this.cssClass }}" data-package-id="{{this.name}}">
+                <div class="package-details">
+                    <h3 class="package-title">
+                        <a>{{this.title}}</a>
+                        {{#if this.owned}}<i class="fas fa-unlock-alt"></i>{{/if}}
+                        {{#if this.locked}}<i class="fas fa-lock"></i>{{/if}}
+                        {{#each this.requires}}
+                        <span class="tag requires">{{ this }}</span>
+                        {{/each}}
+                    </h3>
+                    <div class="package-description">
+                        <p>{{{this.description}}}</p>
+                        <p><a href="{{ this.url }}" title="{{ this.title }}" target="_blank">{{this.url}}</a></p>
+                    </div>
+                </div>
+                <div class="package-controls flexcol">
+                    <span class="tag author">{{ this.author }}</span>
+                    <span class="tag version">{{ localize "Version" }} {{ this.version.version }}</span>
+                    {{#if this.installed }}
+                    <button class="install" type="button" disabled>
+                        <i class="fas fa-check"></i>
+                        <label>{{localize "SETUP.PackageInstalled"}}</label>
+                    </button>
+                    {{else if this.locked }}
+                    <button class="install" type="button">
+                        <i class="fas fa-lock"></i>
+                        <label>{{localize "SETUP.PackageNotOwned"}}</label>
+                    </button>
+                    {{ else }}
+                    <button class="install" type="button" data-manifest="{{ this.version.manifest }}">
+                        <i class="fas fa-download"></i>
+                        <label>{{localize "Install"}}</label>
+                    </button>
+                    {{/if}}
+                </div>
+            </li>
+            {{/each}}
+        </ul>
+    </div>
+
+    <footer class="install flexrow">
+        <label>{{ localize "SETUP.ManifestURL" }}:</label>
+        <input type="text" name="manifestURL" placeholder="https://path/to/{{ packageType }}.json" required/>
+        <button class="install" type="button" data-action="install-url">
+            <i class="fas fa-download"></i> {{ localize "Install" }}
+        </button>
+        <p class="notes">{{ localize "SETUP.InstallHint" }}</p>
+    </footer>
+</form>

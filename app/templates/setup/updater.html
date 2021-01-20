@@ -1,0 +1,13 @@
+<form id="updater" class="app" autocomplete="off">
+    <h3>Update Foundry Virtual Tabletop</h3>
+    <div class="form-group update-key">
+        <label><i class="fas fa-key"></i> Update Key</label>
+        <input type="text" name="updateKey" placeholder="Test Access Key" required/>
+    </div>
+    <p id="update-label">Check to see if a new version is available.</p>
+    <div id="progress-wrapper">
+        <div id="progress-bar"></div>
+    </div>
+    <button id="submit" data-action="check">Check for Update</button>
+    <button onclick="window.location.href='/setup'">Back to Setup</button>
+</form>

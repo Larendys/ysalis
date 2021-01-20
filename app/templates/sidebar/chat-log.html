@@ -1,0 +1,30 @@
+<section class="sidebar-tab tab flexcol" id="chat" data-tab="chat">
+    <ol id="chat-log">
+    </ol>
+
+    {{#unless isStream}}
+    <div id="chat-controls" class="flexrow">
+        <label class="chat-control-icon"><i class="fas fa-dice-d20"></i></label>
+        <select class="roll-type-select" name="rollMode">
+            <optgroup label="{{localize 'CHAT.RollDefault'}}">
+            {{#select rollMode}}
+            {{#each rollModes as |name rt|}}
+            <option value="{{rt}}">{{localize name}}</option>
+            {{/each}}
+            {{/select}}
+            </optgroup>
+        </select>
+
+        {{#if user.isGM}}
+        <div class="control-buttons">
+            <a class="button export-log" title="{{localize 'CHAT.Export'}}"><i class="fas fa-save"></i></a>
+            <a class="delete button chat-flush" title="{{localize 'CHAT.Clear'}}"><i class="fas fa-trash"></i></a>
+        </div>
+        {{/if}}
+    </div>
+
+    <form id="chat-form">
+        <textarea id="chat-message" autocomplete="nope"></textarea>
+    </form>
+    {{/unless}}
+</section>

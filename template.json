@@ -1,0 +1,81 @@
+{
+  "Actor": {
+    "types": [
+      "hero",
+      "creature",
+      "companion" 
+    ],
+    "templates": {
+      "commonStats": {
+        "abilities": {
+          "strenght": {
+            "value": 0,
+            "mod": 0
+          },
+          "fortitude": {
+            "value": 0,
+            "mod": 0
+          },
+          "dexterity": {
+            "value": 0,
+            "mod": 0
+          },
+          "agility": {
+            "value": 0,
+            "mod": 0
+          },
+          "ingeniosity": {
+            "value": 0,
+            "mod": 0
+          },
+          "willpower": {
+            "value": 0,
+            "mod": 0
+          },
+          "humanity": {
+            "value": 0,
+            "mod": 0
+          },
+          "channeling": {
+            "value": 0,
+            "mod": 0
+          }
+        }  
+      }
+    },
+    "hero": {
+      "templates": [
+        "commonStats"
+      ]
+    }
+  },
+  "Item":{
+    "types":[
+      "weapon",
+      "armor"
+    ],
+    "templates":{
+      "itemDescription": {
+        "description": ""
+      }
+    },
+    "weapon": {
+      "templates": [
+        "itemDescription"
+      ],
+      "damage": 0,
+      "sturdiness": 0,
+      "attackWith" : "sword",
+      "blessing" : false
+    },
+    "armor": {
+      "templates": [
+        "itemDescription"
+      ],
+      "protection": 0,
+      "sturdiness": 0,
+      "type" : "light",
+      "blessing" : false
+    }
+  }
+}

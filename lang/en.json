@@ -1,0 +1,14 @@
+{
+  "ysalis": {
+    "weaponType": {
+      "bang": "Bang",
+      "jiang": "Jiang"
+    },
+    "weapon": {
+      "damage": "Damage",
+      "sturdiness": "Sturdiness",
+      "attackWith" : "Attack with",
+      "blessing" : "Blessing?"
+    }
+  }
+}

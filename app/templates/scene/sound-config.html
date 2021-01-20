@@ -1,0 +1,62 @@
+<form autocomplete="off">
+    <p class="notes">{{ localize "SOUND.ConfigHint" }}</p>
+
+    <div class="form-group">
+        <label>Sound Type</label>
+        <div class="form-fields">
+            <select name="type" data-dtype="String">
+                {{#select object.type}}
+                <option value="l">{{ localize "SOUND.TypeLocal" }}</option>
+                <option value="g">{{ localize "SOUND.TypeGlobal" }}</option>
+                {{/select}}
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>{{ localize "SOUND.SourcePath" }}</label>
+        <div class="form-fields">
+            <input type="text" name="path" placeholder="path/audio.mp3" value="{{object.path}}" data-dtype="String"/>
+            {{filePicker target="path" type="audio"}}
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>{{localize "XCoord"}} <span class="units">({{localize "Pixels"}})</span>:</label>
+        <div class="form-fields">
+            <input type="text" name="x" placeholder="X" value="{{object.x}}" data-dtype="Number"/>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>{{localize "YCoord"}} <span class="units">({{localize "Pixels"}})</span>:</label>
+        <div class="form-fields">
+            <input type="text" name="y" placeholder="Y" value="{{object.y}}" data-dtype="Number"/>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>{{localize "SOUND.Radius" }} <span class="units">({{localize "GridUnits"}})</span>:</label>
+        <div class="form-fields">
+        <input type="text" name="radius" placeholder="Grid Units" value="{{object.radius}}" data-dtype="Number"/>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>{{localize "SOUND.Easing"}}</label>
+        <input type="checkbox" name="easing" data-dtype="Boolean" {{checked object.easing}}/>
+        <p class="notes">{{localize "SOUND.EasingHint"}}</p>
+    </div>
+
+    <div class="form-group">
+        <label>{{ localize "SOUND.MaxVol" }}</label>
+        <div class="form-fields">
+            <input class="sound-volume" type="range" name="volume" title="Sound Volume" value="{{object.volume}}"
+                   min="0" max="1" step="0.05" data-dtype="Number"/>
+            <span class="range-value">{{object.volume}}</span>
+        </div>
+        <p class="notes">{{localize "SOUND.MaxVolHint"}}</p>
+    </div>
+
+    <button type="submit" name="submit"><i class="far fa-save"></i> {{submitText}}</button>
+</form>

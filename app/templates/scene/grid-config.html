@@ -1,0 +1,52 @@
+<form autocomplete="off" onsubmit="event.preventDefault();">
+    <p class="notes">Configure the grid and background image position using the mousewheel and arrow keys, or by manually setting the following fields.</p>
+
+    <div class="form-group">
+        <label>{{localize "SCENES.GridType"}}</label>
+        <div class="form-fields">
+            <select name="gridType" data-dtype="Number">
+            {{#select scene.gridType}}
+            {{#each gridTypes as |label t|}}
+                <option value="{{t}}">{{localize label}}</option>
+            {{/each}}
+            {{/select}}
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>{{ localize "SCENES.BackgroundScale" }}</label>
+        <div class="form-fields">
+            <input type="text" name="scale" value="{{ scale }}" data-dtype="Number"/>
+        </div>
+        <p class="notes">Use SHIFT+Mousewheel or SHIFT+Up Arrow and SHIFT+Down Arrow to adjust the background image size.</p>
+    </div>
+
+    <div class="form-group">
+        <label>{{ localize "SCENES.GridSize" }}</label>
+        <div class="form-fields">
+            <input type="text" name="grid" value="{{ scene.grid }}" data-dtype="Number"/>
+        </div>
+        <p class="notes">Use ALT+Mousewheel or ALT+Up Arrow and ALT+Down Arrow to adjust the grid size.</p>
+    </div>
+
+    <div class="form-group">
+        <label>{{ localize "SCENES.GridPosition" }}</label>
+        <div class="form-fields">
+            <label>x</label>
+            <input type="text" name="shiftX" placeholder="{{localize 'SCENES.Pixels'}}" value="{{scene.shiftX}}" data-dtype="Number"/>
+            <label>y</label>
+            <input type="text" name="shiftY" placeholder="{{localize 'SCENES.Pixels'}}" value="{{scene.shiftY}}" data-dtype="Number"/>
+        </div>
+        <p class="notes">Use the Arrow Keys to shift the grid offset.</p>
+    </div>
+
+    <div class="form-group">
+        <button type="button" name="reset">
+            <i class="fas fa-sync"></i> Reset Changes
+        </button>
+        <button type="submit">
+            <i class="fas fa-save"></i> Commit Changes
+        </button>
+    </div>
+</form>

@@ -1,0 +1,5 @@
+<p>{{ localize "SETUP.PackageHasDependencies" number=dependencies.length }}</p>
+{{#each dependencies}}
+<p><a href="{{ this.manifest }}" title="{{ this.name }}" target="_blank">{{this.name}} (ver. {{this.version}})</a></p>
+{{/each}}
+<p>{{ localize "SETUP.PackageInstallDependencies" }}</p>

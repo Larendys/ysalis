@@ -1,0 +1,13 @@
+<li class="player" data-user-id="{{user._id}}">
+    <input type="text" name="users.{{user._id}}.name" value="{{user.name}}" autocomplete="off"/>
+    <input type="password" name="users.{{user._id}}.password" value="{{user.password}}" autocomplete="off"/>
+    <input class="show" type="checkbox" {{#unless user.password}}disabled{{/unless}} title="{{ localize "USERS.KeyShow" }}"/>
+    <select name="users.{{user._id}}.role" data-dtype="Number">
+        {{#select user.role}}
+        {{#each roles as |pval pname|}}
+        <option value="{{pval}}">{{pname}}</option>
+        {{/each}}
+        {{/select}}
+    </select>
+    <a class="user-delete" title="{{ localize 'USERS.Delete' }}"><i class="fas fa-trash"></i></a>
+</li>
