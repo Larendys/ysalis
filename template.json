@@ -7,48 +7,262 @@
     ],
     "templates": {
       "commonStats": {
+        "bars": {
+          "hp" : {
+            "value": 0,
+            "max": 0,
+            "regen": 0,
+            "mod": 0
+          },
+          "mp" : {
+            "value": 0,
+            "max": 0,
+            "regen": 0,
+            "mod": 0
+          },
+          "pa" : {
+            "value": 0,
+            "max": 0,
+            "regen": 0,
+            "mod": 0
+          }
+        },
         "abilities": {
-          "strenght": {
+          "str": {
             "value": 0,
             "mod": 0
           },
-          "fortitude": {
+          "vit": {
             "value": 0,
             "mod": 0
           },
-          "dexterity": {
+          "dex": {
             "value": 0,
             "mod": 0
           },
-          "agility": {
+          "agi": {
             "value": 0,
             "mod": 0
           },
-          "ingeniosity": {
+          "ing": {
             "value": 0,
             "mod": 0
           },
-          "willpower": {
+          "will": {
             "value": 0,
             "mod": 0
           },
-          "humanity": {
+          "hum": {
             "value": 0,
             "mod": 0
           },
-          "channeling": {
+          "cha": {
             "value": 0,
             "mod": 0
           }
-        }  
-      }
+        },  
+        "saves": {
+          "fortitude": {
+            "ability": "fort",
+            "mod": 0,
+            "value": 0,
+            "saveDetail": ""
+          },
+          "reflex": {
+            "ability": "agility",
+            "mod": 0,
+            "value": 0,
+            "saveDetail": ""
+          },
+          "willpower": {
+            "ability": "will",
+            "mod": 0,
+            "value": 0,
+            "saveDetail": ""
+          }
+        },
+        "ac": {
+          "armorClass": {
+            "ability": "fort",
+            "mod": 0,
+            "value": 0,
+            "saveDetail": ""
+          }
+        },
+        "skills": {
+          "red": {
+            "athletism": {
+              "value": 0,
+              "mod": 0,
+              "link": "",
+              "desc": ""
+            },
+            "climbing": {
+              "value": 0,
+              "mod": 0,
+              "link": "",
+              "desc": ""
+            },
+            "swimming": {
+              "value": 0,
+              "mod": 0,
+              "link": "",
+              "desc": ""
+            }
+          },
+          "green": {
+            "acrobatics": {
+              "value": 0,
+              "mod": 0,
+              "link": "",
+              "desc": ""
+            },
+            "stealth": {
+              "value": 0,
+              "mod": 0,
+              "link": "",
+              "desc": ""
+            },
+             "trickery": {
+              "value": 0,
+              "mod": 0,
+              "link": "",
+              "desc": ""
+            }
+          },
+          "blue": { 
+            "alchemy": {
+              "value": 0,
+              "mod": 0,
+              "link": "",
+              "desc": ""
+            },
+             "awareness": {
+              "value": 0,
+              "mod": 0,
+              "link": "",
+              "desc": ""
+            },
+             "caligraphy": {
+              "value": 0,
+              "mod": 0,
+              "link": "",
+              "desc": ""
+            },
+             "craftiness": {
+              "value": 0,
+              "mod": 0,
+              "link": "",
+              "desc": ""
+            },
+             "drawing": {
+              "value": 0,
+              "mod": 0,
+              "link": "",
+              "desc": ""
+            },
+             "first-aid": {
+              "value": 0,
+              "mod": 0,
+              "link": "",
+              "desc": ""
+            },
+             "fishing": {
+              "value": 0,
+              "mod": 0,
+              "link": "",
+              "desc": ""
+            },
+             "harvesting": {
+              "value": 0,
+              "mod": 0,
+              "link": "",
+              "desc": ""
+            },
+             "herbalism": {
+              "value": 0,
+              "mod": 0,
+              "link": "",
+              "desc": ""
+            },
+             "maintenance": {
+              "value": 0,
+              "mod": 0,
+              "link": "",
+              "desc": ""
+            },
+             "meditation": {
+              "value": 0,
+              "mod": 0,
+              "link": "",
+              "desc": ""
+            },
+             "sewing": {
+              "value": 0,
+              "mod": 0,
+              "link": "",
+              "desc": ""
+            },
+             "smithing": {
+              "value": 0,
+              "mod": 0,
+              "link": "",
+              "desc": ""
+            }
+          },  
+          "green": { 
+            "caring": {
+              "value": 0,
+              "mod": 0,
+              "link": "",
+              "desc": ""
+            },
+            "charisma": {
+              "value": 0,
+              "mod": 0,
+              "link": "",
+              "desc": ""
+            },
+            "dancing": {
+              "value": 0,
+              "mod": 0,
+              "link": "",
+              "desc": ""
+            },
+            "faith": {
+              "value": 0,
+              "mod": 0,
+              "link": "",
+              "desc": ""
+            },
+            "intimidation": {
+              "value": 0,
+              "mod": 0,
+              "link": "",
+              "desc": ""
+            },
+            "performence": {
+              "value": 0,
+              "mod": 0,
+              "link": "",
+              "desc": ""
+            },
+            "teaching": {
+              "value": 0,
+              "mod": 0,
+              "link": "",
+              "desc": ""
+            }
+          }
+        }
+      }  
     },
     "hero": {
       "templates": [
         "commonStats"
-      ]
-    }
-  },
+        ]
+      }
+    },
   "Item":{
     "types":[
       "weapon",

@@ -1,1 +1,65 @@
 <form class="{{cssClass}}" autocomplete="off">
+
+    {{!-- Header main information --}}
+    <header class="sheet-header">
+       <img src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="100" width="100"/>
+       <h1><input name="name" type="text" value="{{actor.name}}" placeholder="Name"/></h1>
+       <div class="resources grid grid-3col">
+         {{#each data.bars as |bars key|}}
+           <div class="resource flex-group-center"> 
+             <label for="data.bars.{{key}}.value" class="resource-label rollable">{{key}}</label>
+             <input type="text" name="data.bars.{{key}}.value" value="{{numberFormat bars.value decimals=0}}" data-dtype="Number"/>
+             <span> | </span>
+             <label for="data.bars.{{key}}.max" class="resource-label rollable">{{key}}</label>
+           </div>
+         {{/each}}
+       </div>
+       <div class="characteristics grid grid-4col">
+         {{#each data.abilities as |abilities key|}}
+           <div class="characteristic flexrow flex-group-center">
+             <label for="data.abilities.{{key}}.value" class="resource-label rollable">{{key}}</label> 
+             <input type="text" name="data.abilities.{{key}}.value" value="{{numberFormat abilities.value decimals=0}}" data-dtype="Number"/>
+           </div>
+         {{/each}}
+       </div>
+    </header>      
+
+    {{!-- Sheet Tab Navigation --}}
+    <nav class="sheet-tabs tabs" data-group="primary">
+        <a class="item" data-tab="combat">Combat</a>
+        <a class="item" data-tab="skills">Skills</a>
+        <a class="item" data-tab="spellBook">SpellBook</a>
+        <!--  {{#if (eq actor.type "hero")}} 
+        <a class="item" data-tab="">Arts</a>
+        {{/if}} --->
+        <a class="item" data-tab="inventory">Inventory</a>
+    </nav>
+
+    {{!-- Combat Tab --}} 
+       <div class="characteristics grid grid-4col">
+         {{#each data.saves as |saves key|}}
+           <div class="characteristic flexrow flex-group-center">
+             <label for="data.saves.{{key}}.value" class="resource-label rollable" data-roll="1d20+@saves.{{key}}.value">{{key}}</label> 
+             <input type="text" name="data.saves.{{key}}.value" value="{{numberFormat saves.value decimals=0}}" data-dtype="Number"/>
+               <div>
+                 <a class="item-create" title="dice">
+                   <i class="fas fa-dice-d20"></i>
+                 </a>
+               </div>
+           </div>
+         {{/each}}
+       </div>
+
+       <div class="resource flex-group-center">
+         <label  for="data.ac.armorClass" class="header-label">AC</label>
+           <div class="resource-content flexrow flex-center flex-between">
+             <input type="text" name="data.ac.armorClass" value="{{data.ac.armorClass.value}}" data-dtype="Number"/>
+<!--              <span> ( </span>
+                <input type="text" name="data.con.points" value="{{data.con.points}}" data-dtype="Number"/>
+                <span> ) </span> --->
+           </div>
+      </div>
+
+    {{!-- Skills Tab --}} 
+
+</form>
