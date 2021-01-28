@@ -277,10 +277,15 @@
       "templates": [
         "itemDescription"
       ],
-      "damage": 0,
-      "sturdiness": 0,
-      "attackWith" : "sword",
-      "blessing" : false
+      "name": "",
+      "damage": "1d4",
+      "damageTech": "S",
+      "damageType": "P",
+      "family" : "sword",
+      "sturdiness": 100,
+      "range": 1,
+      "hands": "1",
+      "weight": 0  
     },
     "armor": {
       "templates": [

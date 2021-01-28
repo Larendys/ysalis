@@ -10,7 +10,7 @@ export default class YsalisHeroCharacterSheet extends ActorSheet {
   getData() {
     const data = super.getData();
     data.config = CONFIG.ysalis; 
-    data.weapon = data.items.filter(function (item) {return item.type == "weapon"});
+    data.weapons = data.items.filter(function (item) {return item.type == "weapon"});
 
     return data;
   }

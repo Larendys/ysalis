@@ -1,14 +1,26 @@
 {
   "ysalis": {
+    "weaponTech": {
+      "strong": "Strong",
+      "precise": "Precise",
+      "versatile": "V"
+    },
     "weaponType": {
-      "bang": "Bang",
-      "jiang": "Jiang"
+      "blunt": "Blunt",
+      "slice": "Slice",
+      "pierce": "Pierce",
+      "versatile": "Multiple"
     },
     "weapon": {
+      "name": "Name",
       "damage": "Damage",
-      "sturdiness": "Sturdiness",
-      "attackWith" : "Attack with",
-      "blessing" : "Blessing?"
+      "damageTech": "Versatility",
+      "damageType": "Type",
+      "family" : "Family",
+      "sturdiness": "Sturdiness", 
+      "range": "Range",
+      "hands": "Hands",
+      "weight": "Weight"
     }
   }
 }
